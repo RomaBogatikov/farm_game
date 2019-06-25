@@ -1,0 +1,351 @@
+
+/* to make sure everything sizes appropriately */
+* {
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+body, html {
+  /* to display background image */
+  height: 100%;
+
+  /* to override default value for better styling (especially for mobile) */
+  margin: 0;
+}
+
+/* to center and not to allow to grow above 800px */
+.container {
+  max-width: 800px;
+  height: 100%;
+  margin: 0 auto;
+
+  /* to put form up on top */
+  position: relative;
+}
+
+.form_container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /* gradient */
+  background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,74,228,1) 30%, rgba(249,81,224,1) 70%, rgba(255,255,255,0) 100%);
+
+  /* toggle display none-flex */
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.form_container > p {
+  height: auto;
+  text-align: center;
+  font-weight: 600;
+  margin: 0 10% 1em 10%;
+  line-height: 1.8em;
+}
+
+/* toggle display none-flex in .city .loan .localStorage */
+div.form_container.city {
+  display: none;
+}
+
+div.form_container.loan {
+  display: none;
+}
+
+div.form_container.localStorage {
+  display: none;
+}
+
+/* center and scale background image */
+.bg_img {
+  background-image: url("images/cowbow_farm.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* flex container (children: .assets and .right_container */
+  display: flex;
+  flex-direction: row;
+
+}
+
+.assets {
+  /* background:rgba(155, 47, 47, 0.5); */
+
+  /* property for .assets as a flex-item inside .bg_img */
+  flex-basis: 20%;
+
+  /* flex container (children .barn and .field */
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  letter-spacing: 0.5ch;
+}
+
+.right_container {
+  /* background: rgba(135, 155, 135, 0.5); */
+
+  /* property for .assets as a flex-item inside .bg_img */
+  flex-grow: 1;
+
+  /* <!-- flex container for .game_status, .pick_animals, .pick_crops, .game_info, .btn_container --> */
+  display: flex;
+  flex-direction: column;
+  /* .assets and .right_container flex-basis add up to 100% */
+  flex-basis: 80%;
+}
+
+
+.barn {
+  /* background: rgba(190, 162, 18, 0.3); */
+
+  /* flex item of .assets */
+  /* set flex-grow 1 so .barn takes all available space when .field is not displayed */
+  flex-grow: 1;
+
+  /* to center the word 'barn' */
+  text-align: center;
+}
+
+.barn > p, .field > p {
+  margin: 0;
+}
+
+.barn_field_contents {
+  /* custom variable is needed to prevent overflow on mobile devices (URL bar height problem) */
+  --vh: 0;
+  width: 80%;
+  /* default line-height is normal: 1.2 */
+  height: calc(var(--vh) - 1em * 1.2);
+
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  /* to enable scrolling */
+  overflow: scroll;
+
+}
+
+.barn_field_contents > img {
+  width: 100%;
+  /* height: auto; */
+  padding-top:0.5rem;
+  padding-bottom: 0.5rem;
+
+
+}
+
+.field {
+  /* to display .field change display: none to block */
+  display: none;
+  /* background: rgba(26, 204, 26, 0.3); */
+
+  /* flex item of .assets */
+  /* to center word 'field' */
+  text-align: center;
+}
+
+/* .game_status { */
+  /* background: rgba(27, 27, 192, 0.5) */
+
+  /* flex-item on .right_container */
+
+/* } */
+
+.game_status > div {
+  background: rgba(245,174,205, 0.5);
+background: radial-gradient(circle, rgba(245,174,205,0.5) 0%, rgba(255,255,255,0.5) 100%);
+}
+
+/* .pick_animals { */
+  /* background: rgba(189, 22, 22, 0.5); */
+
+  /* flex item of .right_container */
+  /* flex-grow: 1; */
+
+/* } */
+
+.pick_animals > p:first-of-type, .pick_crops > div:first-child > p:first-of-type {
+  box-sizing: content-box;
+  display: inline-block;
+  padding: 1em;
+  margin: 0;
+  height: auto;
+  border-radius: 10px;
+  color: white;
+  /* background: rgba(12, 2, 150, 0.9); */
+
+  background: rgb(242,242,242);
+  background: linear-gradient(0deg, rgba(242,242,242,0) 0%, rgba(85,53,255,1) 30%, rgba(82,43,252,1) 70%, rgba(255,255,255,0) 100%);
+}
+
+.pick_crops {
+  /* background: rgba(17, 12, 12, 0.5); */
+
+  /* flex item of .right_container */
+  flex-grow: 1;
+}
+
+/* change display to 'block' in js to display it */
+.pick_crops > div {
+  display: none;
+}
+
+.game_info {
+  /* background: rgb(248, 163, 4); */
+  text-align: center;
+  line-height: 1.5em;
+  /* consider toggling to flex-basis 30% to expand game-info field */
+  /* flex-basis: 30%; */
+}
+
+.game_info > h3 {
+  display: inline-block;
+  padding: 0.5em 2em 0.5em 2em;
+  font-weight: 500;
+  margin: 0;
+  cursor: pointer;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(252,176,69,1) 25%, rgba(252,176,69,1) 75%, rgba(255,255,255,0) 100%);
+}
+
+.game_info > div {
+  height: 0;
+  overflow: hidden;
+}
+
+.game_info > div > p {
+  margin-top: 0;
+}
+
+.game_info > div > p > span {
+  font-weight: 700;
+}
+
+.btn_container {
+  /* to move button 'Next Year' right */
+  text-align: right;
+}
+
+.btn_next_year {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 900;
+  border-radius: 15px;
+  background-color: yellowgreen;
+  border: none;
+}
+
+.btn_next_year:hover {
+  background-color: darkorange;
+  cursor: pointer;
+}
+
+/* to remove blue border around button when clicked */
+.btn_next_year:focus {
+  outline: 0;
+}
+
+.store_animals_crops {
+  background: rgba(0, 0, 0, 0.8);
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 10px;
+
+  /* to position animals-plants inside*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.store_animals_crops > div {
+  flex-basis: 25%;
+}
+
+.img_container > img {
+  max-height: auto;
+  max-width: 100%;
+}
+
+.img_container > p {
+  font-size: 0.8rem;
+  color: white;
+  margin: 0;
+}
+
+.game_status {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.game_status > div {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.pick_animals, .pick_crops {
+  text-align: center;
+  font-weight: 700;
+  padding-top: 1em;
+}
+
+
+
+/* ACCORDION STYLING */
+/*
+.ui-accordion .ui-accordion-header {
+  cursor: pointer;
+  position: relative;
+  margin-top: 1px;
+  zoom: 1;
+} */
+
+/* .ui-accordion .ui-accordion-li-fix {
+  display: inline;
+}
+.ui-accordion .ui-accordion-header-active {
+  /* border-bottom: 0 !important; */
+/* }  */
+/* .ui-accordion .ui-accordion-header a {
+  display: block;
+  font-size: 1em;
+  padding: .5em .5em .5em .7em;
+} */
+/* IE7-/Win - Fix extra vertical space in lists */
+/* .ui-accordion a {
+  zoom: 1;
+}
+.ui-accordion-icons .ui-accordion-header a {
+  padding-left: 2.2em;
+}
+.ui-accordion .ui-accordion-header .ui-icon {
+  position: absolute;
+  left: .5em;
+  top: 50%;
+  margin-top: -8px;
+}
+.ui-accordion .ui-accordion-content {
+  padding: 1em 2.2em;
+  border-top: 0;
+  margin-top: -2px;
+  position: relative;
+  top: 1px;
+  margin-bottom: 2px;
+  overflow: auto;
+  display: none;
+  zoom: 1;
+}
+.ui-accordion .ui-accordion-content-active {
+  display: block;
+} */
