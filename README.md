@@ -1,5 +1,5 @@
 # 'Farm Game' project (Unit 1)
-Link to play: [Farm game](https://romanbogatikov.github.io/farmgame/index.html)
+Link to play: [Farm game](https://farm-game-by-roman.herokuapp.com/)
 
 ## Overview
 Your aim is to run a profitable farming business, but farmer's profit heavily depends on the weather...
